@@ -1,0 +1,364 @@
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  width: 100%;
+  height: 100px;
+  background: rgb(167, 166, 166);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(86, 85, 85);
+}
+html {
+  font-family: "Saira", sans-serif;
+  scroll-behavior: smooth;
+}
+header {
+  position: fixed;
+  width: 100vw;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  z-index: 100;
+}
+
+.slip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  transition: 0.5s cubic-bezier(0.95, 0.05, 0.795, 0.85);
+}
+
+.header__logo,
+.nav-center,
+.nav-right {
+  flex: 1;
+}
+
+.nav-center {
+  margin: 0 40px;
+}
+
+.nav-right {
+  display: flex;
+  justify-content: end;
+}
+
+.header__logo {
+  display: inline;
+}
+.header__logo svg {
+  width: 120px;
+  height: 24px;
+}
+
+.model {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  padding: 120px 24px 80px;
+}
+
+.model .model__info,
+.model .model__buttons {
+  text-align: center;
+}
+
+.model .model__info h2 {
+  font-size: 50px;
+  font-weight: 500;
+}
+.model .model__info p {
+  padding: 8px 12px;
+}
+
+.delivery-link {
+  color: #000;
+  text-decoration: none;
+  position: relative;
+}
+.delivery-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: #000;
+  transition: all 0.5s;
+}
+
+.delivery-link:hover::before {
+  box-shadow: 0 1px 2px #000;
+}
+
+/** Set background */
+.model3 {
+  background: url(../../images/Model3.jpeg) center / cover no-repeat;
+}
+
+.modelY {
+  background: url(../../images/ModelY.jpeg) center / cover no-repeat;
+}
+
+.modelS {
+  background: url(../../images/ModelS.jpeg) center / cover no-repeat;
+}
+.modelX {
+  background: url(../../images/ModelX.jpeg) center / cover no-repeat;
+}
+.solarpanels {
+  background: url(../../images/panels.jpeg) center / cover no-repeat;
+}
+/* Scroll Snap */
+.tesla {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+
+.model {
+  scroll-snap-align: center;
+}
+
+/**/
+.nav__list {
+  display: flex;
+  list-style-type: none;
+}
+
+.nav__list .nav__item .nav__item--link {
+  display: block;
+  padding: 8px 16px;
+  text-align: center;
+  text-transform: capitalize;
+  text-decoration: none;
+  font-size: 14px;
+  color: #000;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.page__scroll {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.page__scroll.hide {
+  display: none;
+}
+
+.model__buttons {
+  display: flex;
+  gap: 24px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.btn {
+  display: block;
+  padding: 12px 24px;
+  text-decoration: none;
+  min-width: 340px;
+  border-radius: 4px;
+  font-weight: 600;
+  overflow: hidden;
+  position: relative;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 400px;
+  transform: rotate(45deg) translate(-350px, -60%);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.15),
+    0 0 10px rgba(255, 255, 255, 0.15);
+}
+
+.btn.inventory-btn::before {
+  background: rgba(0, 0, 0, 0.15);
+}
+.btn:hover::before {
+  transform: rotate(45deg) translate(300px);
+  transition: all 0.5s ease-in-out;
+}
+
+.order-btn {
+  background-color: #3a3d41;
+  color: #f1f5f8;
+}
+
+.inventory-btn {
+  background-color: #f1f5f8;
+  color: #3a3d41;
+}
+
+.menu-responsive {
+  display: none;
+}
+
+/** Responsive */
+@media screen and (max-width: 1030px) {
+  .navigation {
+    display: none;
+  }
+  .menu-open {
+    display: block;
+    border-radius: 4px;
+    padding: 6px 16px;
+    background-color: rgba(0, 0, 0, 0.08);
+    position: relative;
+  }
+  .menu-open:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  .menu-responsive {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    /* z index  */
+    z-index: 102;
+  }
+  .subnav__overlay {
+    transition: all 0.5s;
+  }
+  .menu-responsive.active ~ .subnav__overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 101;
+    backdrop-filter: blur(4px);
+  }
+  .menu-responsive .subnav__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    list-style-type: none;
+    min-width: 300px;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 100px 40px;
+    overflow-x: auto;
+    transform: translateX(100%);
+    transition: all 0.5s ease-in-out;
+  }
+  .menu-responsive.active .subnav__menu {
+    transform: translateX(0);
+  }
+  .subnav__close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.5s;
+  }
+
+  .subnav__close:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .subnav__close:hover {
+    opacity: 0.8;
+  }
+  .subnav__item + .subnav__item {
+    margin-top: 8px;
+  }
+  .subnav__menu .subnav__item--link {
+    display: block;
+    padding: 8px 12px;
+    text-transform: capitalize;
+    color: #000;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.5s;
+  }
+
+  .subnav__item:hover .subnav__item--link {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .menu__more {
+    position: relative;
+  }
+  .icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .slip {
+    display: none;
+  }
+}
+
+@media (max-width: 698px) {
+  .model__buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+/** Animation on load */
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  45% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  45% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  45% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
